@@ -734,12 +734,15 @@
       }
 
       /* スマホではbrを無効にして自然な折り返しに */
-      .hero-subtitle br,
       .hero-desc br,
       .about-text br,
       .visual-card p br,
       .portfolio-text br {
         display: none;
+      }
+
+      .nowrap {
+        white-space: nowrap;
       }
 
       .visual-grid {
@@ -799,7 +802,7 @@
   <section class="hero" id="top">
     <div class="hero-content fade-in">
       <h1 class="hero-title">Ayano Tomioka</h1>
-      <p class="hero-subtitle">花とことばで世界観を表現する<br>ブランドディレクター</p>
+      <p class="hero-subtitle">花とことばで世界観を表現する<br><span class="nowrap">ブランドディレクター</span></p>
       <p class="hero-desc">
         日比谷花壇で20年。1万点以上の商品企画を経て、<br>
         今はブランドの世界観を整えるお手伝いをしています。
@@ -1045,7 +1048,7 @@
       <p class="section-label fade-in">Contact</p>
       <p class="section-sublabel fade-in">お問い合わせ</p>
       <p class="contact-desc fade-in">
-        お仕事のご依頼・ご相談はお気軽にご連絡ください。<br>
+        お仕事のご依頼・ご相談は<br>お気軽にご連絡ください。<br>
         2〜3営業日以内にお返事いたします。
       </p>
       <div class="contact-info fade-in">
