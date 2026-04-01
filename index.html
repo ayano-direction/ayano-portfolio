@@ -470,6 +470,30 @@
       font-weight: 400;
     }
 
+    .portfolio-item.text-only {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio-item.text-only .portfolio-text {
+      max-width: 640px;
+    }
+
+    .portfolio-scope {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .portfolio-scope span {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      background: rgba(109, 83, 42, 0.08);
+      color: var(--color-brown);
+      letter-spacing: 0.03em;
+    }
+
     /* ===== Clients ===== */
     .clients {
       background: var(--color-bg-light);
@@ -993,6 +1017,43 @@
         </div>
       </div>
 
+      <!-- Case 4: decora LINE構築 -->
+      <div class="portfolio-item reverse text-only fade-in">
+        <div class="portfolio-text">
+          <p class="portfolio-tag">LINE Official Account</p>
+          <h3>世界観をそのままLINEに</h3>
+          <p class="portfolio-subtitle">フラワーショップ decora 様</p>
+          <p>
+            ブランドの世界観を大切にした<wbr>LINE公式アカウントを構築。<wbr>マガジンライクな配信設計で、<wbr>読みものとして届くメッセージに。<wbr>ワークショップ予約の受付から<wbr>顧客対応までをLINEに集約しました。
+          </p>
+          <div class="portfolio-scope">
+            <span>アカウント設計</span>
+            <span>リッチメニュー</span>
+            <span>配信設計</span>
+            <span>ワークショップ予約</span>
+            <span>操作マニュアル制作</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 5: 協会LINE構築 -->
+      <div class="portfolio-item text-only fade-in">
+        <div class="portfolio-text">
+          <p class="portfolio-tag">LINE Official Account</p>
+          <h3>協会の会員管理をLINEで一元化</h3>
+          <p class="portfolio-subtitle">協会 様（会員数500名規模）</p>
+          <p>
+            会員情報の管理から<wbr>セグメント別の情報配信までを<wbr>LINE公式アカウントで一元化。<wbr>会員種別に応じた配信設計で、<wbr>必要な情報を必要な方だけに届ける<wbr>仕組みを構築中。
+          </p>
+          <div class="portfolio-scope">
+            <span>会員管理設計</span>
+            <span>セグメント配信</span>
+            <span>リッチメニュー</span>
+            <span>ステップ配信</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1009,7 +1070,7 @@
         <span class="client-tag">nakato <span class="client-category">食品</span></span>
         <span class="client-tag">北洋硝子 <span class="client-category">津軽びいどろ</span></span>
         <span class="client-tag">モノ・インターナショナル <span class="client-category">プリザーブド素材</span></span>
-        <span class="client-tag">decora <span class="client-category">花屋</span></span>
+        <span class="client-tag">decora <span class="client-category">フラワーショップ</span></span>
       </div>
       <p class="clients-note fade-in">ほか、個人事業主・農家の方もサポートしています</p>
     </div>
