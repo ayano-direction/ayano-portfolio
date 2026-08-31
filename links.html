@@ -168,6 +168,38 @@
       opacity: 0.3;
     }
 
+    .link-button--featured {
+      background: var(--color-brown);
+      border-color: var(--color-brown);
+      color: var(--color-white);
+    }
+
+    .link-button--featured .link-label {
+      color: var(--color-white);
+      font-weight: 500;
+    }
+
+    .link-button--featured .link-sub {
+      color: #e6d5dc;
+    }
+
+    .link-button--featured .link-icon {
+      opacity: 0.85;
+    }
+
+    .link-button--featured .link-arrow {
+      opacity: 0.5;
+    }
+
+    .link-button--featured:hover {
+      background: #5a5047;
+      border-color: #5a5047;
+    }
+
+    .nowrap {
+      white-space: nowrap;
+    }
+
     .footer-text {
       font-family: var(--font-en);
       font-size: 0.7rem;
@@ -207,6 +239,20 @@
     </div>
 
     <div class="links">
+      <a href="https://line.me/R/ti/p/%40741svwxz" class="link-button link-button--featured" target="_blank" rel="noopener">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+        <div class="link-text">
+          <p class="link-label">商品写真のスタイリングレッスン <span class="nowrap">お申込みはこちら</span></p>
+          <p class="link-sub">9/16(水)開催・初回5名限定</p>
+        </div>
+        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </a>
+
       <a href="https://ayano-direction.com" class="link-button" target="_blank" rel="noopener">
         <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
