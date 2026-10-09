@@ -398,7 +398,10 @@
     .strip .stage .tate { position: absolute; top: 0; right: 0; }
     /* 縦長の作品に画面写真を添えるとき＝他の事例と同じく小さい画像は左上・大きい画像は左下。縦書きの下は空ける */
     .strip .tall.pair .stage .main { width: 60%; }
-    .strip .tall.pair .stage .sub { position: absolute; top: 0; left: 0; width: 20%; margin: 0; border: 0; }
+    .strip .pair .stage .sub { position: absolute; top: 0; left: 0; width: 20%; margin: 0; border: 0; }
+    /* 横長の画面（リッチメニュー）に縦長の画面を添えるとき＝大きい画像を控えめに、小さい画像を少し大きく */
+    .strip .pair:not(.tall) .stage .main { width: 66%; }
+    .strip .pair:not(.tall) .stage .sub { width: 26%; }
     .strip .story .body { margin-top: 20px; padding: 0; }
     .sl-dots { display: flex; gap: 8px; margin-top: clamp(32px, 4vw, 48px); }
     .sl-dots span { flex: 1 1 0; max-width: 64px; height: 2px; background: var(--line); transition: background .3s ease; }
@@ -581,15 +584,16 @@
           <p class="txt">季節の花といっしょに楽しむ、フレーバーティーのあたらしい魅力を提案。企画からスタイリング、文章までを担当しました。</p>
         </div>
       </article>
-      <article class="story tall">
+      <article class="story pair">
         <div class="stage">
           <p class="tate"><span>募集は、</span><span>数時間で満席に。</span></p>
-          <img class="main" src="images/works/decora.jpg" alt="フラワーショップさまの公式LINEあいさつメッセージ" loading="lazy">
+          <img class="main" src="images/works/decora-menu.jpg" alt="フラワーショップさまの公式LINEリッチメニュー" loading="lazy">
+          <img class="sub" src="images/works/decora.jpg" alt="フラワーショップさまの公式LINEあいさつメッセージ" loading="lazy">
         </div>
         <div class="body">
           <p class="cap">フラワーショップさま</p>
           <h3><span class="nb">公式LINE</span>の構築</h3>
-          <p class="txt"><span class="nb">公式LINE</span>を構築し、あいさつメッセージから予約の導線、配信画像までを整えました。LINEで募集したワークショップは、数時間で満席になりました。</p>
+          <p class="txt"><span class="nb">公式LINE</span>を構築し、あいさつメッセージとリッチメニュー、予約の導線、配信画像までを整えました。LINEで募集したワークショップは、数時間で満席になりました。</p>
         </div>
       </article>
       <article class="story tall pair">
