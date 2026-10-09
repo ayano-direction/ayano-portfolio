@@ -396,6 +396,9 @@
     .strip .stage .sub { width: 36%; margin: 0 0 5% 14%; border: 0; }
     .strip .tall .stage .main { width: 82%; height: 100%; object-fit: contain; object-position: left bottom; margin: 0; }
     .strip .stage .tate { position: absolute; top: 0; right: 0; }
+    /* 縦長の作品に画面写真を添えるとき＝他の事例と同じく小さい画像は左上・大きい画像は左下。縦書きの下は空ける */
+    .strip .tall.pair .stage .main { width: 60%; }
+    .strip .tall.pair .stage .sub { position: absolute; top: 0; left: 0; width: 20%; margin: 0; border: 0; }
     .strip .story .body { margin-top: 20px; padding: 0; }
     .sl-dots { display: flex; gap: 8px; margin-top: clamp(32px, 4vw, 48px); }
     .sl-dots span { flex: 1 1 0; max-width: 64px; height: 2px; background: var(--line); transition: background .3s ease; }
@@ -589,15 +592,16 @@
           <p class="txt"><span class="nb">公式LINE</span>を構築し、あいさつメッセージから予約の導線、配信画像までを整えました。LINEで募集したワークショップは、数時間で満席になりました。</p>
         </div>
       </article>
-      <article class="story tall">
+      <article class="story tall pair">
         <div class="stage">
           <p class="tate"><span>ご本人のことばから、</span><span>力強い世界観を。</span></p>
           <img class="main" src="images/works/ogawa-peony.jpg" alt="花生産者さまの芍薬コレクションのチラシ" loading="lazy">
+          <img class="sub" src="images/works/ogawa-ig.jpg" alt="花生産者さまのInstagramプロフィール画面" loading="lazy">
         </div>
         <div class="body">
           <p class="cap">花生産者さま</p>
           <h3>チラシ・Instagram</h3>
-          <p class="txt">ご本人のことばから、力強い世界観のチラシを設計。Instagramの見直しでは、約1日でフォロワーが113名増加。花屋さんや仲卸の方など、届けたかった花業界の方が中心でした。</p>
+          <p class="txt">ご本人のことばから、力強い世界観のチラシを設計。Instagramはプロフィールと固定投稿を見直し、約1日でフォロワーが113名増加。花屋さんや仲卸の方など、届けたかった花業界の方が中心でした。</p>
         </div>
       </article>
     </div>
