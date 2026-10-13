@@ -267,7 +267,7 @@
       font-family: var(--en); font-size: 16px; letter-spacing: 0.28em; cursor: pointer;
     }
     form button:disabled { opacity: .6; cursor: default; }
-    form .cf-turnstile { margin-top: 26px; }
+    form .cf-turnstile { margin-top: 0; }
     .form-result { margin-top: 22px; font-size: 14px; line-height: 2; }
     .form-result small { color: var(--brown); }
     .contact-ig { margin-top: 30px; font-size: 13px; }
@@ -770,7 +770,7 @@
           <textarea id="message" name="message" placeholder="お問い合わせ内容" required></textarea>
           <!-- 人には見えない欄。botだけが埋める -->
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;">
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAFVkGTFa2E4tGUNE" data-language="ja"></div>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAFVkGTFa2E4tGUNE" data-language="ja" data-appearance="interaction-only"></div>
           <button type="submit" id="contact-send">Send</button>
         </form>
         <p id="contact-result" class="form-result" role="status" aria-live="polite" hidden></p>
@@ -899,7 +899,7 @@
           return;
         }
         if (!data.get('cf-turnstile-response')) {
-          show('確認の表示が終わるまで、少しお待ちください。');
+          show('確認中です。数秒おいて、もう一度Sendを押してください。');
           return;
         }
         btn.disabled = true;
