@@ -266,6 +266,10 @@
       margin-top: 30px; min-height: 52px; padding: 0 44px; border: 0; background: var(--brown); color: #fff;
       font-family: var(--en); font-size: 16px; letter-spacing: 0.28em; cursor: pointer;
     }
+    form button:disabled { opacity: .6; cursor: default; }
+    form .cf-turnstile { margin-top: 26px; }
+    .form-result { margin-top: 22px; font-size: 14px; line-height: 2; }
+    .form-result small { color: var(--brown); }
     .contact-ig { margin-top: 30px; font-size: 13px; }
     .contact-ig span { font-family: var(--en); letter-spacing: 0.24em; text-transform: uppercase; color: var(--brown); margin-right: 14px; }
     .contact-ig a { border-bottom: 1px solid var(--line); }
@@ -498,6 +502,7 @@
       });
     }
   </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -756,19 +761,19 @@
         <div class="contact-way way-form fade">
           <p class="way-label">Form</p>
           <h3 class="way-title">フォームで相談する</h3>
-        <form action="https://formsubmit.co/a52a08e07faf7b6abb370ea69549050b" method="POST">
-          <input type="hidden" name="_subject" value="【HP】お問い合わせ">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://ayano-direction.com/#contact">
-          <input type="text" name="_honey" style="display:none">
+        <form id="contact-form" novalidate>
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="お名前" required>
+          <input type="text" id="name" name="name" placeholder="お名前" required autocomplete="name">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="メールアドレス" required>
+          <input type="email" id="email" name="email" placeholder="メールアドレス" required autocomplete="email">
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="お問い合わせ内容" required></textarea>
-          <button type="submit">Send</button>
+          <!-- 人には見えない欄。botだけが埋める -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAFVkGTFa2E4tGUNE" data-language="ja"></div>
+          <button type="submit" id="contact-send">Send</button>
         </form>
+        <p id="contact-result" class="form-result" role="status" aria-live="polite" hidden></p>
         </div>
       </div>
     </div>
@@ -876,6 +881,46 @@
       addEventListener('pointermove', e => { if (!cur.classList.contains('show')) return; tx = e.clientX; ty = e.clientY; kick(); }, { passive: true });
       strip.addEventListener('pointerdown', () => { ts = .82; kick(); });
       addEventListener('pointerup', () => { if (cur.classList.contains('show')) { ts = 1; kick(); } });
+    })();
+
+    // お問い合わせ（記録に保存できたあとだけ、受付の表示を出す）
+    (() => {
+      const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw8-ghPjZ-Fb6kSAXergL-YuXtMp5TsNVyRkm-58FehFLB1Z3cCVKhshY7Qbv6i9N6_LQ/exec';
+      const form = document.getElementById('contact-form');
+      const btn = document.getElementById('contact-send');
+      const result = document.getElementById('contact-result');
+      if (!form) return;
+      const show = html => { result.innerHTML = html; result.hidden = false; };
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const data = new FormData(form);
+        if (!['name', 'email', 'message'].every(k => String(data.get(k) || '').trim())) {
+          show('お名前・メールアドレス・お問い合わせ内容をご記入ください。');
+          return;
+        }
+        if (!data.get('cf-turnstile-response')) {
+          show('確認の表示が終わるまで、少しお待ちください。');
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        // 普通のフォーム形式で送る（事前確認の通信が起きない形）
+        fetch(ENDPOINT, { method: 'POST', body: new URLSearchParams(data) })
+          .then(res => res.json())
+          .then(json => {
+            if (!json.ok) throw new Error(json.error || 'unknown');
+            form.hidden = true;
+            show('お問い合わせを受け付けました。<br>2〜3営業日以内にご連絡いたします。' +
+                 (json.id ? '<br><small>受付番号：' + json.id + '</small>' : ''));
+          })
+          .catch(err => {
+            console.error(err);
+            show('送信できませんでした。少し時間をおいてもう一度お試しいただくか、公式LINEかInstagramのメッセージからご連絡ください。');
+            btn.disabled = false;
+            btn.textContent = 'Send';
+            if (window.turnstile) turnstile.reset();
+          });
+      });
     })();
   </script>
 </body>
