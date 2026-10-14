@@ -197,6 +197,11 @@
     .about-bg { position: absolute; top: 0; left: 0; width: min(56%, 1100px); height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 50%; filter: saturate(.84); }
     .about-veil { position: absolute; top: 0; left: 0; width: min(56%, 1100px); height: auto; aspect-ratio: 3 / 2; background: linear-gradient(180deg, rgba(250,248,246,0) 58%, rgba(250,248,246,1) 100%), linear-gradient(90deg, rgba(250,248,246,.62) 0%, rgba(250,248,246,.62) 40%, rgba(250,248,246,.99) 100%); }
     .about .wrap { position: relative; z-index: 1; }
+    /* 横に広い画面：写真を画面の左端に貼りつけず、文字の列に寄せる（1968px以下は今まで通り） */
+    .about-bg, .about-veil { left: max(0px, calc(50% - 984px)); }
+    @media (min-width: 1969px) {
+      .about-veil { background: linear-gradient(90deg, rgba(250,248,246,1) 0, rgba(250,248,246,0) 180px), linear-gradient(180deg, rgba(250,248,246,0) 58%, rgba(250,248,246,1) 100%), linear-gradient(90deg, rgba(250,248,246,.62) 0%, rgba(250,248,246,.62) 40%, rgba(250,248,246,.99) 100%); }
+    }
     .about-col { max-width: 660px; margin-left: auto; }
     .about .big-en { font-size: min(8vw, 104px); }
     .about-inner { margin-top: 26px; }
@@ -412,6 +417,10 @@
       scroll-padding-left: var(--pad); padding: 0 var(--pad); scrollbar-width: none;
     }
     .strip::-webkit-scrollbar { display: none; }
+    /* 横に広い画面：事例の帯を1920pxまでにして中央に置き、右端をぼかす（1968px以下は今まで通り） */
+    @media (min-width: 1969px) {
+      .strip { max-width: 1920px; margin-left: auto; margin-right: auto; --pad: calc((1920px - 1120px) / 2 + var(--side)); -webkit-mask-image: linear-gradient(to right, #000 82%, transparent 100%); mask-image: linear-gradient(to right, #000 82%, transparent 100%); }
+    }
     .strip .story { position: relative; display: block; flex: 0 0 min(38vw, 460px); max-width: none; margin: 0; padding: 0; scroll-snap-align: start; }
     .strip .story + .story::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--gap) / -2); width: 1px; background: var(--line); }
     .strip .stage { position: relative; aspect-ratio: 1 / 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
